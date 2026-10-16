@@ -1,3 +1,7 @@
+# Multi-brand marketing agent
+
+The shared campaign platform is now implemented alongside the Stellar Mill research component. See [PLATFORM.md](PLATFORM.md) for capabilities, startup and current limitations. Start the control room with `python3 brand_server.py --monitor`.
+
 # Stellar Mill ad research agent
 
 A subscription-free research tool for Stellar Mill’s Tax Checkup campaign. Python 3.10+; no external packages required.
@@ -34,7 +38,7 @@ A checked-in `research/latest.json` and `research/report.html` contain an actual
 python3 marketing_agent.py own-ads --account 506078191226626
 ```
 
-Pagination is capped at 100 records and reports when capped; saved data never includes token-bearing pagination URLs. This code makes read-only Meta requests. It has no launch, budget, or spending endpoint.
+Pagination is capped at 100 records and reports when capped; saved data never includes token-bearing pagination URLs. The research component makes read-only Meta requests. The separate multi-brand control room has reviewed campaign creation, launch and pause controls described in PLATFORM.md.
 
 The current connection rejected BOTH own-account research and competitor Ad Library queries with Meta error 200 (“Cannot call API … on behalf of user”). This is an authorization blocker; it does not establish that competitors have no ads, that access is permanently unavailable, or that the token value is malformed. Restore app/user/asset authorization through Meta’s supported flow, then retry. Ad Library access and country/category coverage have additional limits; a Marketing API token alone does not guarantee broad US commercial-ad research.
 
